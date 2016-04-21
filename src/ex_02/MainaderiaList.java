@@ -17,7 +17,7 @@ public class MainaderiaList implements Mainaderia {
     public void matricular (Criatura c) throws IllegalArgumentException {
         if (this.contingut.contains(c))
             throw new IllegalArgumentException("matricular: criatura repetida");
-        contingut.add(c);
+        	contingut.add(c);
     }
     
     // desmatricula la criatura de nom donat. Retorna la criatura que 
@@ -53,7 +53,15 @@ public class MainaderiaList implements Mainaderia {
     
     // retorna el número de criatures del sexe especificat com a paràmetre
     public int quantsSexe (int sexe) {
-        
+        Iterator it;
+        Criatura c;
+        int cont=0;
+        it = contingut.iterator();
+        while(it.hasNext()){
+        	c = (Criatura)it.next();
+        	if(c.getSexe()==sexe) cont++;
+        }
+        return cont;
     	//TODO 1
         /* Exercici: a la versió mostrada a classe de la implementació
            d'aquest mètode, la iteració sobre el contingut no es feia
@@ -63,7 +71,6 @@ public class MainaderiaList implements Mainaderia {
          
            Després, podeu executar ProvaMainaderia per veure si el resultat
            que obteniu és el mateix que s'obtenia abans */
-    	return -1;
     }
     
     // retorna la i-èssima criatura. Excepció si el paràmetre està fora
